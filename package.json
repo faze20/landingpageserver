@@ -1,0 +1,25 @@
+{
+  "name": "reactlandingpagepserver",
+  "version": "1.0.0",
+  "description": "To send emails",
+  "main": "server.js",
+  "type": "module",
+    "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "author": "Afeez",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "emailjs": "^4.0.1",
+    "express": "^4.18.2",
+    "express-async-handler": "^1.2.0",
+    "nodemailer": "^6.9.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
