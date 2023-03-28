@@ -5,6 +5,13 @@ const newLeadSchema = mongoose.Schema({
     email:{type: String, required: false, unique:true},
     message:{type: String, default:''},
     phone:{type: String, required: false},
+    title:{type: String, required: false},
+    message:{type: String, required: false},
+    phone:{type: String, required: false},
+    location:{type: String, required: false},
+    type:{type: String, required: false},
+    landingpageName:{type: String, required: false},
+    count:{type: Number, required: false},
 } ,    
 {timestamps: true}
 )

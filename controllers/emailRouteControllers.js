@@ -5,23 +5,25 @@ import NewLeadModel from '../model/newLeadModels.js'
 
 export const sendEmail = asyncHandler(async (req, res) => {
     console.log(req.query.templateParams.phone, req.headers,req.query.templateParams);
-
+    const { phone, to_name , from_name, reply_to, landingpage, locatin , type} = req.query.templateParams;
+    let count ;
     // const leadExistBefore = await NewLeadModel.findOne({ email:'afff@trr.com' , phone:'766554434343'});
-    // // const leadExistBefore = await NewLeadModel.findOne({ email , phone});
+    const leadExistBefore = await NewLeadModel.findOne({ email:reply_to.trim() , phone:phone.trim()});
 
-    // if (leadExistBefore)  return res.json({error:'You sent a message already'});
+    if (leadExistBefore.count > 10) return res.json({error:'Message limit reached'});
 
-    // const newLead = await NewLeadModel.create({
-    //   // fullName:fullName.trim(),
-    //   // email:email.trim(),
-    //   // message:message.trim(),
-    //   // phone:phone.trim(),
-    //   fullName:'Afeez Badmos',
-    //   email:"afeez20@yahoo.com",
-    //   message:'i want to know more about front end developer',
-    //   phone:'7472498760',
-    // });
-    // if(!newLead) return res.json({error:'database error'});
+
+    const newLead = await NewLeadModel.create({
+        fullName:from_name.trim(),
+        title:to_name.trim(),
+        email:reply_to.trim(),
+        message:message.trim(),
+        phone:phone.trim(),
+        location:location.trim(),
+        type:type.trim(),
+        landingpageName:landingpage.trim(),
+        count:count++
+    });
+    if(!newLead) return res.json({error:'database error'});
     return res.status(201).json({message:'Message sent'});
-    // return res.status(400).json({error:'database error'});
 });
