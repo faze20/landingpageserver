@@ -3,6 +3,8 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv/config.js';
 import emailRoutes from './routes/emailRoutes.js';
+import adminRoutes from './routes/adminRoutes.js';
+import path from 'path';
 
 
 const app = express();
@@ -12,15 +14,24 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
 
+
+
 app.get('/' , (req, res) => {
     res.sendFile('/index.html');
 });
 
+
+const adminCode = process.env.LOGIN_CODE
 app.post('/',(req,res)=>{
-    console.log(req.body.user.name);
-    res.send('logged in succesfully')
+    console.log(req.body.user.name, req.body.user.code);
+    if(req.body.user.code === adminCode){
+        res.sendFile(path.resolve('public/dashboard.html'));
+    }else{
+        res.status(400).send('code mismatch')
+    }
 });
 
+app.use('/', adminRoutes); 
 app.use('/email', emailRoutes); 
 
 const PORT =process.env.PORT || 5000;

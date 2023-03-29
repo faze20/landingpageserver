@@ -1,5 +1,5 @@
 import asyncHandler from 'express-async-handler';
-import NewLeadModel from '../model/newLeadModels.js'
+import NewLeadModel from '../model/newLeadModels.js';
 
 
 

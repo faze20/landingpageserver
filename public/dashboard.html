@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .dashboardhTwo{
+            text-align: center;
+            margin-bottom: 10%;
+        }
+        .containerButton{
+            padding: 0.7rem 1.2rem;
+            cursor: pointer;
+            font-weight: 600;
+            color: #fff;
+            background-color: green;
+            border: 1px solid #fff;
+            border-radius: 0.3rem;
+            transition: transform 0.3s ease-in;
+        }
+        .containerButton:hover{
+            transform: translateX(-10%);
+            background-color: #fff;
+            color: green;
+            border-color: green;
+        }
+        @media (max-width: 768px) {
+            .container{
+                margin: 0 5%;
+            }
+        }
+    </style>
+    <script></script>
+    <title>Dashboard</title>
+</head>
+<body>
+    <div class="dashboard">
+        <h2 class="dashboardhTwo">
+            Welcome To Your Dashboard
+        </h2>
+        <div >
+            <div>
+                <!-- must have delete amd edit button -->
+                <!-- <button class="containerButton" id="users" type="button" onclick="handleGetUser()"> -->
+                <button class="containerButton" id="users" type="button" >
+                    Get All Users
+               </button> 
+            </div>
+            <div>
+                <button class="containerButton" id="usercount" type="button" >
+                   Total Users
+               </button>
+            </div>
+            <div>
+                <button class="containerButton" id="free" type="button" >
+                    Free to use
+               </button>
+            </div>
+            <div>
+                <button class="containerButton" id="btn" type="button" >
+                    Test Button
+               </button>
+            </div>
+ 
+        </div>
+        <div class="display" id="display">
+
+        </div>
+    </div>
+    <script>
+        document.getElementById("users").addEventListener("click", fetchUsers);  
+        // const getUserButton = document.getElementById('users');
+        // api url
+        const api_url = "http://localhost:8000/getUsers";
+
+        async function fetchUsers(){
+            // Storing response
+            // const response = await fetch(api_url);
+            
+            // Storing data in form of JSON
+            // var data = await response.json();
+            // console.log(data);
+            // displayUser()
+            // if (response) {
+            //     hideloader();
+            // }
+
+            await 
+            fetch(api_url)
+            .then(res =>console.log(res))
+            .catch(err => console.log(err))
+
+
+
+        }
+
+        function displayUser() {
+            document.getElementById("display").innerHTML = 
+            "Hello World" + "<br>" + "Welcome to the  javaTpoint.com";  
+        }
+        // function hideloader() {
+        //     document.getElementById('loading').style.display = 'none';
+        // }
+
+        document.getElementById("btn").addEventListener("click", fun);  
+        function fun() {  
+        document.getElementById("display").innerHTML = "Hello World" + "<br>" + "Welcome to the  javaTpoint.com";  
+        }  
+        
+
+    </script>
+
+</body>
+</html>

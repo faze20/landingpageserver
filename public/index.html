@@ -9,28 +9,71 @@
             padding: 0;
             margin: 0;
         }
-        .container{
-            background-color: beige;
-            height: 100vh;
+        .dashboard{
             display: flex;
             flex-direction: column;
+            justify-content: center;
+            height: 100vh;
+        }
+        .dashboardhTwo{
+            text-align: center;
+            margin-bottom: 10%;
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            margin: 0 20%;
+        }
+        .containerInput{
+            outline: none;
+            padding: 0.7rem 0.9rem;
+            margin: 1rem 0;
+            border: 1px solid green;
+            border-radius: 0.3rem;
+            cursor: pointer;
+            transition: transform 0.3s ease-in;
+        }
+        .containerButton{
+            padding: 0.7rem 1.2rem;
+            cursor: pointer;
+            font-weight: 600;
+            color: #fff;
+            background-color: green;
+            border: 1px solid #fff;
+            border-radius: 0.3rem;
+            transition: transform 0.3s ease-in;
+        }
+        .containerInput:hover{
+            transform: translateX(-10%);
+        }
+        .containerButton:hover{
+            transform: translateX(-10%);
+            background-color: #fff;
+            color: green;
+            border-color: green;
+        }
+        @media (max-width: 768px) {
+            .container{
+                margin: 0 5%;
+
+            }
         }
     </style>
     <script></script>
     <title>Dashboard</title>
 </head>
 <body>
-    <div class="container">
-        <h2>
-            Dashboard for Landing Pages
+    <div class="dashboard">
+        <h2 class="dashboardhTwo">
+            Login To Your Dashboard 
         </h2>
         <div >
             <form method="POST" action="/" class="container">
-                <input type="text" name="user[name]" placeholder="Enter Admin username">
-                <input type="password" name="user[password]" placeholder="Password">
-                <input type="text" name="user[code]" placeholder="Admin Code">
-                <button type="submit">
-                    click to login to Admin
+                <input type="text" name="user[name]" class="containerInput" placeholder="Enter Admin username">
+                <input type="password" name="user[password]" class="containerInput" placeholder="Password">
+                <input type="text" name="user[code]" class="containerInput" placeholder="Admin Code">
+                <button class="containerButton" type="submit">
+                     Login to Admin
                 </button>
             </form>
         </div>
