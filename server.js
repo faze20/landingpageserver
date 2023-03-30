@@ -19,6 +19,9 @@ app.use(express.static('public'));
 app.get('/' , (req, res) => {
     res.sendFile('/index.html');
 });
+// app.get('/test' , (req, res) => {
+//     res.json('DAshboard');
+// });
 
 
 const adminCode = process.env.LOGIN_CODE
@@ -31,7 +34,7 @@ app.post('/',(req,res)=>{
     }
 });
 
-app.use('/', adminRoutes); 
+app.use('/admin', adminRoutes); 
 app.use('/email', emailRoutes); 
 
 const PORT =process.env.PORT || 5000;

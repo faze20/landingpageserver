@@ -1,11 +1,12 @@
 import express from 'express';
 
-import {getAllUsers, dashBoard} from '../controllers/adminControllers.js';
+import {getAllUsers, dashBoard, login} from '../controllers/adminControllers.js';
 
 const router = express.Router();
 
 // router.get('dashbooard',dashBoard);
-router.get('getUsers',getAllUsers);
+router.get('/getusers',getAllUsers);
+router.post('/login',login);
 
 
 export default router;
