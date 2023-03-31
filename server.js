@@ -13,7 +13,16 @@ const allowedWebsite = [
     "https://adminportal.softwaredevbytes.com",
     "http://localhost:3001"
 ]
-
+var corsOptions = {
+    origin: function (origin, callback) {
+      if (allowedWebsite.indexOf(origin) !== -1) {
+        callback(null, true)
+      } else {
+        callback(new Error('Not allowed by CORS'))
+      }
+    }
+  }
+   
 // app.options("*", cors())
 app.use(function(req, res, next) {
     res.setHeader("Access-Control-Allow-Origin", allowedWebsite);
@@ -24,7 +33,8 @@ app.use(function(req, res, next) {
 
 // app.use(cors()); 
 
-app.use(cors({ origin: allowedWebsite, credentials: true }));
+// app.use(cors({ origin: allowedWebsite }));
+// app.use(cors({ origin: allowedWebsite, credentials: true }));
 
 
 
@@ -56,8 +66,8 @@ app.post('/',(req,res)=>{
     }
 });
 
-app.use('/admin', adminRoutes); 
-app.use('/email', emailRoutes); 
+app.use('/admin',cors(corsOptions),  adminRoutes); 
+app.use('/email',cors(corsOptions),  emailRoutes); 
 
 const PORT =process.env.PORT || 5000;
 const CONNECTION_URL = process.env.MONGODB_URI 
