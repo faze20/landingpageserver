@@ -14,7 +14,13 @@ const allowedWebsite = [
     "http://localhost:3001"
 ]
 
-app.options("*", cors())
+// app.options("*", cors())
+app.use(function(req, res, next) {
+    res.setHeader("Access-Control-Allow-Origin", allowedWebsite);
+    res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+    next();
+});
 
 // app.use(cors()); 
 
@@ -28,11 +34,7 @@ app.use(cors({ origin: allowedWebsite, credentials: true }));
 //         res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 //         next();
 //     });
-app.use(function(req, res, next) {
-    res.header('Access-Control-Allow-Origin', allowedWebsite);
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-    next();
-});
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
