@@ -9,10 +9,16 @@ import path from 'path';
 
 const app = express();
 
+const allowedWebsite = [
+    "https://adminportal.softwaredevbytes.com",
+    "http://localhost:3001"
+]
+
 app.options("*", cors())
 
 // app.use(cors()); 
-app.use(cors({ origin: ["https://adminportal.softwaredevbytes.com", "http://localhost:3001"], credentials: true }));
+
+app.use(cors({ origin: allowedWebsite, credentials: true }));
 
 
 
@@ -22,12 +28,11 @@ app.use(cors({ origin: ["https://adminportal.softwaredevbytes.com", "http://loca
 //         res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 //         next();
 //     });
-// app.use(function(req, res, next) {
-//     res.header('Access-Control-Allow-Origin', 'https://adminportal.softwaredevbytes.com/');
-//       // res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
-//       res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-//       next();
-//     });
+app.use(function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', allowedWebsite);
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    next();
+});
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
