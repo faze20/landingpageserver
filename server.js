@@ -9,17 +9,19 @@ import path from 'path';
 
 const app = express();
 
+app.options("*", cors())
+
 // app.use(cors()); 
-// app.use(cors({ origin: ["https://adminportal.softwaredevbytes.com", "http://localhost:3001"] }));
+app.use(cors({ origin: ["https://adminportal.softwaredevbytes.com", "http://localhost:3001"], credentials: true }));
 
 
 
-app.all('*', function(req, res, next) {
+// app.all('*', function(req, res, next) {
 
-        res.header("Access-Control-Allow-Origin", cors({ origin: ["https://adminportal.softwaredevbytes.com", "http://localhost:3001"] }));
-        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-        next();
-    });
+//         res.header("Access-Control-Allow-Origin", cors({ origin: ["https://adminportal.softwaredevbytes.com", "http://localhost:3001"] }));
+//         res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//         next();
+//     });
 // app.use(function(req, res, next) {
 //     res.header('Access-Control-Allow-Origin', 'https://adminportal.softwaredevbytes.com/');
 //       // res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
