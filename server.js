@@ -9,7 +9,9 @@ import path from 'path';
 
 const app = express();
 
-app.use(cors()); 
+// app.use(cors()); 
+app.use(cors({ origin: ["http://localhost:3000", "https://origin2.com", "http://localhost:3001"] }));
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));

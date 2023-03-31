@@ -1,5 +1,9 @@
 import asyncHandler from 'express-async-handler';
 import NewLeadModel from '../model/newLeadModels.js';
+import dotenv from 'dotenv/config.js';
+
+
+const adminVerifyCode = process.env.LOGIN_CODE
 
 
 
@@ -14,8 +18,13 @@ export const deleteUser = asyncHandler(async (req, res) => {
     return res.json({message: 'deleted'});
 });
 export const login = asyncHandler(async (req, res) => {
-    console.log(req.query)
-    return res.json({message: 'you are logged in'});
+    const{code}= req.headers;
+    if(code === adminVerifyCode){
+        console.log(req.query, req.headers)          
+        return res.json({message: 'you are logged in'});
+    }else{
+        return res.status(403).send('Not Authorised')
+    }
 });
 export const registerAdmin = asyncHandler(async (req, res) => {
     console.log(req.query)
