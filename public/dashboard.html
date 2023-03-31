@@ -45,8 +45,6 @@
         </h2>
         <div >
             <div>
-                <!-- must have delete amd edit button -->
-                <!-- <button class="containerButton" id="users" type="button" onclick="handleGetUser()"> -->
                 <button class="containerButton" id="users" type="button" >
                     Get All Users
                </button> 
@@ -74,8 +72,7 @@
     </div>
     <script>
         document.getElementById("users").addEventListener("click", fetchUsers);  
-        // const getUserButton = document.getElementById('users');
-        // api url
+   
         const api_url = "http://192.168.4.37:8000/test";
         // const api_url = "http://localhost:8000/getUsers";
 
@@ -92,9 +89,6 @@
             document.getElementById("display").innerHTML = 
             "Hello World" + "<br>" + "Welcome to the  javaTpoint.com";  
         }
-        // function hideloader() {
-        //     document.getElementById('loading').style.display = 'none';
-        // }
 
         document.getElementById("btn").addEventListener("click", fun);  
         function fun() {  

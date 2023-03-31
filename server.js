@@ -19,9 +19,6 @@ app.use(express.static('public'));
 app.get('/' , (req, res) => {
     res.sendFile('/index.html');
 });
-// app.get('/test' , (req, res) => {
-//     res.json('DAshboard');
-// });
 
 
 const adminCode = process.env.LOGIN_CODE
