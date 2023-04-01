@@ -9,22 +9,26 @@ import path from 'path';
 
 const app = express();
 
-app.use((req,res,next)=>{
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    next();
-})
+app.options("*", cors({ origin: "http://192.168.1.49:3000", optionsSuccessStatus: 200 }));
+
+app.use(cors({ origin:"http://192.168.1.49:3000", optionsSuccessStatus: 200 }));
+
+// app.use((req,res,next)=>{
+//     res.setHeader('Access-Control-Allow-Origin', '*');
+//     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
+//     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+//     next();
+// })
 
 
-const corsOptions = {
-    origin: "http://192.168.1.49:3000/",
-    // origin: "https://www.ifemie.com/",
-    optionsSuccessStatus: 200,
-    credentials: true
-}
+// const corsOptions = {
+//     origin: "http://192.168.1.49:3000/",
+//     // origin: "https://www.ifemie.com/",
+//     optionsSuccessStatus: 200,
+//     credentials: true
+// }
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 
 
 
@@ -60,15 +64,6 @@ app.use(cors(corsOptions));
 
 // app.use(cors({ origin: "https://www.ifemie.com/" }));
 // app.use(cors({ origin: allowedWebsite, credentials: true }));
-
-
-
-// app.all('*', function(req, res, next) {
-
-//         res.header("Access-Control-Allow-Origin", cors({ origin: ["https://adminportal.softwaredevbytes.com", "http://localhost:3001"] }));
-//         res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//         next();
-//     });
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
