@@ -31,9 +31,15 @@ const app = express();
 //     next();
 // });
 
+app.use(function(req, res, next) {
+    res.setHeader("Access-Control-Allow-Origin","https://www.ifemie.com" );
+    res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+    next();
+});
 // app.use(cors()); 
 
-app.use(cors({ origin: "https://www.ifemie.com/" }));
+// app.use(cors({ origin: "https://www.ifemie.com/" }));
 // app.use(cors({ origin: allowedWebsite, credentials: true }));
 
 
