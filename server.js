@@ -9,6 +9,22 @@ import path from 'path';
 
 const app = express();
 
+const corsOptions = {
+    origin: "https://www.ifemie.com/",
+    optionsSuccessStatus: 200,
+    credentials: true
+}
+
+app.use(cors(corsOptions));
+
+
+app.use((req,res,next)=>{
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    next();
+})
+
 // const allowedWebsite = [
 //     "https://adminportal.softwaredevbytes.com",
 //     "http://localhost:3001"
@@ -31,12 +47,12 @@ const app = express();
 //     next();
 // });
 
-app.use(function(req, res, next) {
-    res.setHeader("Access-Control-Allow-Origin",cors("https://www.ifemie.com") );
-    res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
-    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-    next();
-});
+// app.use(function(req, res, next) {
+//     res.setHeader("Access-Control-Allow-Origin",cors("https://www.ifemie.com") );
+//     res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
+//     res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+//     next();
+// });
 // app.use(cors()); 
 
 // app.use(cors({ origin: "https://www.ifemie.com/" }));
