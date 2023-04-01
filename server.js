@@ -18,7 +18,8 @@ app.use((req,res,next)=>{
 
 
 const corsOptions = {
-    origin: "https://www.ifemie.com/",
+    origin: "http://192.168.1.49:3000/",
+    // origin: "https://www.ifemie.com/",
     optionsSuccessStatus: 200,
     credentials: true
 }
