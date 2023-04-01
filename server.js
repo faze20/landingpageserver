@@ -9,31 +9,31 @@ import path from 'path';
 
 const app = express();
 
-const allowedWebsite = [
-    "https://adminportal.softwaredevbytes.com",
-    "http://localhost:3001"
-]
-var corsOptions = {
-    origin: function (origin, callback) {
-      if (allowedWebsite.indexOf(origin) !== -1) {
-        callback(null, true)
-      } else {
-        callback(new Error('Not allowed by CORS'))
-      }
-    }
-  }
+// const allowedWebsite = [
+//     "https://adminportal.softwaredevbytes.com",
+//     "http://localhost:3001"
+// ]
+// var corsOptions = {
+//     origin: function (origin, callback) {
+//       if (allowedWebsite.indexOf(origin) !== -1) {
+//         callback(null, true)
+//       } else {
+//         callback(new Error('Not allowed by CORS'))
+//       }
+//     }
+//   }
    
-// app.options("*", cors())
-app.use(function(req, res, next) {
-    res.setHeader("Access-Control-Allow-Origin", corsOptions(allowedWebsite));
-    res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
-    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-    next();
-});
+// // app.options("*", cors())
+// app.use(function(req, res, next) {
+//     res.setHeader("Access-Control-Allow-Origin", corsOptions(allowedWebsite));
+//     res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
+//     res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+//     next();
+// });
 
 // app.use(cors()); 
 
-// app.use(cors({ origin: allowedWebsite }));
+app.use(cors({ origin: "https://adminportal.softwaredevbytes.com" }));
 // app.use(cors({ origin: allowedWebsite, credentials: true }));
 
 
