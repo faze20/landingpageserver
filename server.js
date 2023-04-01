@@ -9,6 +9,14 @@ import path from 'path';
 
 const app = express();
 
+app.use((req,res,next)=>{
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    next();
+})
+
+
 const corsOptions = {
     origin: "https://www.ifemie.com/",
     optionsSuccessStatus: 200,
@@ -18,12 +26,6 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 
-app.use((req,res,next)=>{
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    next();
-})
 
 // const allowedWebsite = [
 //     "https://adminportal.softwaredevbytes.com",
