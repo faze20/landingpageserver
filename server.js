@@ -32,7 +32,7 @@ const app = express();
 // });
 
 app.use(function(req, res, next) {
-    res.setHeader("Access-Control-Allow-Origin","https://www.ifemie.com" );
+    res.setHeader("Access-Control-Allow-Origin",cors("https://www.ifemie.com") );
     res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
     res.setHeader("Access-Control-Allow-Headers", "Content-Type");
     next();
