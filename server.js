@@ -33,7 +33,7 @@ const app = express();
 
 // app.use(cors()); 
 
-app.use(cors({ origin: "https://adminportal.softwaredevbytes.com" }));
+app.use(cors({ origin: "https://www.ifemie.com/" }));
 // app.use(cors({ origin: allowedWebsite, credentials: true }));
 
 
