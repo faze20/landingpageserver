@@ -9,51 +9,26 @@ import path from 'path';
 
 const app = express();
 
-const allowedWebsite = [
-    "https://adminportal.softwaredevbytes.com",
-    "http://localhost:3001"
-]
-var corsOptions = {
-    origin: function (origin, callback) {
-      if (allowedWebsite.indexOf(origin) !== -1) {
-        callback(null, true)
-      } else {
-        callback(new Error('Not allowed by CORS'))
-      }
-    }
-  }
-   
+
 // app.options("*", cors())
-app.use(function(req, res, next) {
-    res.setHeader("Access-Control-Allow-Origin", allowedWebsite);
-    res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
-    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-    next();
-});
+// app.use(function(req, res, next) {
+//     res.setHeader("Access-Control-Allow-Origin", allowedWebsite);
+//     res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
+//     res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+//     next();
+// });
 
-// app.use(cors()); 
 
-// app.use(cors({ origin: allowedWebsite }));
-// app.use(cors({ origin: allowedWebsite, credentials: true }));
+app.use(cors({ origin: 'https://frontenddeveloper.softwaredevbytes.com' }));
 
 
 
-// app.all('*', function(req, res, next) {
-
-//         res.header("Access-Control-Allow-Origin", cors({ origin: ["https://adminportal.softwaredevbytes.com", "http://localhost:3001"] }));
-//         res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//         next();
-//     });
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
 app.use('/admin',  adminRoutes); 
-app.use('/email',  emailRoutes)
-// app.use('/admin',cors(corsOptions),  adminRoutes); 
-// app.use('/email',cors(corsOptions),  emailRoutes)
-
-
+app.use('/email',  emailRoutes);
 
 app.get('/' , (req, res) => {
     res.sendFile('/index.html');
@@ -69,8 +44,6 @@ app.post('/',(req,res)=>{
         res.status(400).send('code mismatch')
     }
 });
-
-; 
 
 const PORT =process.env.PORT || 5000;
 const CONNECTION_URL = process.env.MONGODB_URI 
