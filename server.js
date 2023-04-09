@@ -14,7 +14,7 @@ app.use(cors({ origin: 'https://frontenddeveloper.softwaredevbytes.com' }));
 
 // app.options("*", cors())
 app.use(function(req, res, next) {
-    res.setHeader("Access-Control-Allow-Origin", 'https://frontenddeveloper.softwaredevbytes.com' );
+    res.setHeader("Access-Control-Allow-Origin", '*' );
     res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT,DELETE");
     res.setHeader("Access-Control-Allow-Headers", "Content-Type");
     next();
