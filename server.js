@@ -19,7 +19,8 @@ const app = express();
 // });
 
 
-app.use(cors({ origin: 'https://frontenddeveloper.softwaredevbytes.com' }));
+// app.use(cors({ origin: 'https://frontenddeveloper.softwaredevbytes.com' }));
+app.use(cors());
 
 
 
