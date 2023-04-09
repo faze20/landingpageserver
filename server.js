@@ -9,23 +9,26 @@ import path from 'path';
 
 const app = express();
 
+app.use(cors({ origin: 'https://frontenddeveloper.softwaredevbytes.com' }));
+
 
 // app.options("*", cors())
-// app.use(function(req, res, next) {
-//     res.setHeader("Access-Control-Allow-Origin", allowedWebsite);
-//     res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
-//     res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-//     next();
-// });
+app.use(function(req, res, next) {
+    res.setHeader("Access-Control-Allow-Origin", 'https://frontenddeveloper.softwaredevbytes.com' );
+    res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT,DELETE");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+    next();
+});
 
 
-// app.use(cors({ origin: 'https://frontenddeveloper.softwaredevbytes.com' }));
-app.use(cors({
-    "origin": "*",
-    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
-    "preflightContinue": false,
-    "optionsSuccessStatus": 204
-  }));
+
+
+// app.use(cors({
+//     "origin": "*",
+//     "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+//     "preflightContinue": false,
+//     "optionsSuccessStatus": 204
+//   }));
 
 
 
