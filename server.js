@@ -9,6 +9,21 @@ import path from 'path';
 
 const app = express();
 
+app.get('/' , (req, res) => {
+    res.sendFile('/index.html');
+});
+
+
+const adminCode = process.env.LOGIN_CODE
+app.post('/',(req,res)=>{
+    console.log(req.body.user.name, req.body.user.code);
+    if(req.body.user.code === adminCode){
+        res.sendFile(path.resolve('public/dashboard.html'));
+    }else{
+        res.status(400).send('code mismatch')
+    }
+});
+
 app.use(cors({ origin: 'https://frontenddeveloper.softwaredevbytes.com' }));
 
 
@@ -39,20 +54,6 @@ app.use(express.static('public'));
 app.use('/admin',  adminRoutes); 
 app.use('/email',  emailRoutes);
 
-app.get('/' , (req, res) => {
-    res.sendFile('/index.html');
-});
-
-
-const adminCode = process.env.LOGIN_CODE
-app.post('/',(req,res)=>{
-    console.log(req.body.user.name, req.body.user.code);
-    if(req.body.user.code === adminCode){
-        res.sendFile(path.resolve('public/dashboard.html'));
-    }else{
-        res.status(400).send('code mismatch')
-    }
-});
 
 const PORT =process.env.PORT || 5000;
 const CONNECTION_URL = process.env.MONGODB_URI 
