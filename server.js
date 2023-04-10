@@ -16,12 +16,14 @@ app.get('/' , (req, res) => {
 
 const adminCode = process.env.LOGIN_CODE
 app.post('/',(req,res)=>{
-    console.log(req.body.user.name, req.body.user.code);
-    if(req.body.user.code === adminCode){
-        res.sendFile(path.resolve('public/dashboard.html'));
-    }else{
-        res.status(400).send('code mismatch')
-    }
+    res.sendFile(path.resolve('public/dashboard.html'));
+
+    // console.log(req.body.user.name, req.body.user.code);
+    // if(req.body.user.code === adminCode){
+    //     res.sendFile(path.resolve('public/dashboard.html'));
+    // }else{
+    //     res.status(400).send('code mismatch')
+    // }
 });
 
 app.use(cors({ origin: 'https://frontenddeveloper.softwaredevbytes.com' }));
