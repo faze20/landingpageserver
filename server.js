@@ -25,8 +25,9 @@ app.post('/',(req,res)=>{
     //     res.status(400).send('code mismatch')
     // }
 });
+app.use(cors())
 
-app.use(cors({ origin: 'https://frontenddeveloper.softwaredevbytes.com' }));
+// app.use(cors({ origin: 'https://frontenddeveloper.softwaredevbytes.com' }));
 
 
 // app.options("*", cors())
